@@ -31,49 +31,53 @@
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'funfun'); ?></a>
 
 		<header id="masthead">
-			<address class="donk-adres">Adres: Nieuwe Donkstraat 1, 2809NJ Gouda</address>
+			<div class="content-width">
+				<address class="donk-adres">Adres: Nieuwe Donkstraat 1, 2809NJ Gouda</address>
+			</div>
 			<div class="site-header">
-				<div class="site-branding donk-site-branding">
-					<img src="<?php echo get_template_directory_uri() ?>/assets/images/logo.png" alt="donk logo" class="logo" />
+				<div class="content-width header-container">
+					<div class="site-branding donk-site-branding">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/images/logo.png" alt="donk logo" class="logo" />
 
-					<!-- Comment OUT -->
-					<!-- <?php
-							// the_custom_logo();
-							if (is_front_page() && is_home()) :
-							?>
+						<!-- Comment OUT -->
+						<!-- <?php
+								// the_custom_logo();
+								if (is_front_page() && is_home()) :
+								?>
 					<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
 					<?php
-							else :
+								else :
 					?>
 					<p class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
 					<?php
-							endif;
-							$funfun_description = get_bloginfo('description', 'display');
-							if ($funfun_description || is_customize_preview()) :
+								endif;
+								$funfun_description = get_bloginfo('description', 'display');
+								if ($funfun_description || is_customize_preview()) :
 					?>
 					<p class="site-description"><?php echo $funfun_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 												?></p>
 				
 				<?php endif; ?> -->
-					<!-- End Comment OUT -->
+						<!-- End Comment OUT -->
 
-				</div><!-- .site-branding -->
+					</div><!-- .site-branding -->
 
-				<nav id="site-navigation" class="main-navigation donk-main-navigation">
-					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'funfun'); ?></button>
-					<?php
+					<nav id="site-navigation" class="main-navigation donk-main-navigation">
+						<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'funfun'); ?></button>
+						<?php
 
-					wp_nav_menu(
-						array(
-							// 'theme_location' => 'menu-1',
-							'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li class="menu-item donk-nav-lid-worden"><a href="http://www.google.com">Lid worden</a></li></ul>',
-							'depth' 		=> 1,
-							'menu_id'        => 'primary-menu',
-						)
-					);
+						wp_nav_menu(
+							array(
+								// 'theme_location' => 'menu-1',
+								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li class="menu-item donk-nav-lid-worden"><a href="http://www.google.com">Lid worden</a></li></ul>',
+								'depth' 		=> 1,
+								'menu_id'        => 'primary-menu',
+							)
+						);
 
-					?>
-					<!-- <button>Lid worden</button> -->
-				</nav><!-- #site-navigation -->
+						?>
+						<!-- <button>Lid worden</button> -->
+					</nav><!-- #site-navigation -->
+				</div>
 			</div>
 		</header><!-- #masthead -->

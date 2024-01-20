@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The main template file
  *
@@ -15,42 +16,62 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
+	<div class="header-row">
+		<div class="content-width grid">
+			<div class="news-head">
+				<article class="item1">item1</article>
+				<article class="item2">item2</article>
+				<article class="item3">item3</acticle>
+			</div>
+			<div class="soccer-stats-head">
+				<article class="item1">item4</article>
+				<article class="item2">item5</article>
+				<article class="item3">item6</article>
+			</div>
+		</div>
 
-		<?php
-		if ( have_posts() ) :
+	</div>
+	<div class="content-row">
+		<div></div>
+	</div>
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
 
-				/*
+	<?php
+	if (have_posts()) :
+
+		if (is_home() && !is_front_page()) :
+	?>
+			<header>
+				<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+			</header>
+	<?php
+		endif;
+
+		/* Start the Loop */
+		while (have_posts()) :
+			the_post();
+
+			/*
 				 * Include the Post-Type-specific template for the content.
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part('template-parts/content', get_post_type());
 
-			endwhile;
+		endwhile;
 
-			the_posts_navigation();
+		the_posts_navigation();
 
-		else :
+	else :
 
-			get_template_part( 'template-parts/content', 'none' );
+		get_template_part('template-parts/content', 'none');
 
-		endif;
-		?>
+	endif;
+	?>
 
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
 get_sidebar();
