@@ -70,7 +70,7 @@
 							array(
 								// 'theme_location' => 'menu-1',
 								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li class="menu-item donk-nav-lid-worden"><a href="http://www.google.com">Lid worden</a></li></ul>',
-								'depth' 		=> 1,
+								'depth' 		=> 2,
 								'menu_id'        => 'primary-menu',
 							)
 						);

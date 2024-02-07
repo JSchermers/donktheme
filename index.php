@@ -17,27 +17,6 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-	<div class="header-row">
-		<div class="content-width grid">
-			<div class="news-head">
-				<article class="item1">item1</article>
-				<article class="item2">item2</article>
-				<article class="item3">item3</acticle>
-			</div>
-			<div class="soccer-stats-head">
-				<article class="item1">item4</article>
-				<article class="item2">item5</article>
-				<article class="item3">item6</article>
-			</div>
-		</div>
-
-	</div>
-	<div class="content-row">
-		<div></div>
-	</div>
-
-
-
 	<?php
 	if (have_posts()) :
 
