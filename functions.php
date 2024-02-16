@@ -134,6 +134,49 @@ function funfun_widgets_init() {
 }
 add_action( 'widgets_init', 'funfun_widgets_init' );
 
+
+// Add custom post type for teams
+function create_team_post_type() {
+    $labels = array(
+        'name'               => 'Teams',
+        'singular_name'      => 'Team',
+        'menu_name'          => 'Teams',
+        'name_admin_bar'     => 'Team',
+        'add_new'            => 'Add New',
+        'add_new_item'       => 'Add New Team',
+        'new_item'           => 'New Team',
+        'edit_item'          => 'Edit Team',
+        'view_item'          => 'View Team',
+        'all_items'          => 'All Teams',
+        'search_items'       => 'Search Teams',
+        'parent_item_colon'  => 'Parent Teams:',
+        'not_found'          => 'No teams found.',
+        'not_found_in_trash' => 'No teams found in Trash.'
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'team' ),
+        'capability_type'    => 'page',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'menu_icon'          => 'dashicons-groups', // Add menu icon
+        'show_in_rest'		 => true,
+        'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' )
+    );
+
+    register_post_type( 'team', $args );
+}
+add_action( 'init', 'create_team_post_type' );
+
+
+
 /**
  * Enqueue scripts and styles.
  */
