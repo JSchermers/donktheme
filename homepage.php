@@ -17,19 +17,18 @@ get_header();
 				?>
 
 					<?php
-					the_id();
-					$index = $wp_query->current_post + 1;
-					if ($index < 4) { ?>
-						<article class="item<?php echo $index; ?>">
-							<?php
-							get_template_part('template-parts/content', 'page');
+						$index = $wp_query->current_post + 1;
+						if ($index < 4) { ?>
+							<div class="item<?php echo $index; ?>">
+								<?php
+								get_template_part('template-parts/content', 'page');
 
-							// If comments are open or we have at least one comment, load up the comment template.
-							if (comments_open() || get_comments_number()) :
-								comments_template();
-							endif; ?>
-						</article>
-					<?php }
+								// If comments are open or we have at least one comment, load up the comment template.
+								if (comments_open() || get_comments_number()) :
+									comments_template();
+								endif; ?>
+							</div>
+						<?php }
 					?>
 
 
@@ -50,10 +49,9 @@ get_header();
 		?>
 
 			<?php
-			the_id();
 			$index = $wp_query->current_post + 1;
 			if ($index > 3) { ?>
-				<article class="item<?php echo $index; ?>">
+				<div class="item<?php echo $index; ?>">
 					<?php
 					get_template_part('template-parts/content', 'page');
 
@@ -61,7 +59,8 @@ get_header();
 					if (comments_open() || get_comments_number()) :
 						comments_template();
 					endif;
-					?></article>
+					?>
+				</div>
 			<?php }
 			?>
 		<?php endwhile; ?>
