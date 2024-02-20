@@ -10,34 +10,62 @@ get_header();
 	<div class="header-row">
 		<div class="content-width grid">
 			<div class="news-head">
-				<article class="item1">item1</article>
-				<article class="item2">item2</article>
-				<article class="item3">item3</acticle>
+				<?php
+				while (have_posts()) :
+					the_post();
+
+				?>
+
+					<?php
+					the_id();
+					$index = $wp_query->current_post + 1;
+					if ($index < 4) { ?>
+						<article class="item<?php echo $index; ?>">
+							<?php
+							get_template_part('template-parts/content', 'page');
+
+							// If comments are open or we have at least one comment, load up the comment template.
+							if (comments_open() || get_comments_number()) :
+								comments_template();
+							endif; ?>
+						</article>
+					<?php }
+					?>
+
+
+				<?php endwhile; ?>
 			</div>
 			<div class="soccer-stats-head">
-				<article class="item1">item4</article>
-				<article class="item2">item5</article>
-				<article class="item3">item6</article>
+				<article class="item4">item4</article>
+				<article class="item5">item5</article>
+				<article class="item6">item6</article>
 			</div>
 		</div>
 
 	</div>
 	<div class="content-row">
-		<div></div>
+		<?php while (have_posts()) :
+			the_post();
+
+		?>
+
+			<?php
+			the_id();
+			$index = $wp_query->current_post + 1;
+			if ($index > 3) { ?>
+				<article class="item<?php echo $index; ?>">
+					<?php
+					get_template_part('template-parts/content', 'page');
+
+					// If comments are open or we have at least one comment, load up the comment template.
+					if (comments_open() || get_comments_number()) :
+						comments_template();
+					endif;
+					?></article>
+			<?php }
+			?>
+		<?php endwhile; ?>
 	</div>
-	<?php
-	while (have_posts()) :
-		the_post();
-
-		get_template_part('template-parts/content', 'page');
-
-		// If comments are open or we have at least one comment, load up the comment template.
-		if (comments_open() || get_comments_number()) :
-			comments_template();
-		endif;
-
-	endwhile; // End of the loop.
-	?>
 
 </main><!-- #main -->
 <?php
