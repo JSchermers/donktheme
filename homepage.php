@@ -48,7 +48,7 @@ get_header();
 		</div>
 
 	</div>
-	<div class="content-row">
+	<div class="content-row content-width">
 		<?php
 		// the query.
 		// READ
