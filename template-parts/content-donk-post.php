@@ -10,6 +10,8 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<?php funfun_post_thumbnail(); ?>	
+
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
@@ -17,12 +19,10 @@
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
-		?>
+		?>		
+		<?php funfun_entry_footer(); ?> <span class="news-seperator">-</span>
+		<?php funfun_posted_on(); ?>
+		
 	</header><!-- .entry-header -->
 
-	<?php funfun_post_thumbnail(); ?>	
-
-	<footer class="entry-footer">
-		<?php funfun_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
