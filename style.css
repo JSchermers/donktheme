@@ -1095,6 +1095,10 @@ textarea {
 	margin-bottom: 5px;
 }
 
+.news-head div[class^="item"] {
+	margin-block-end: var(--gutter-medium);
+}
+
 .cat-links, .posted-on {
 	text-wrap: nowrap;
 }
@@ -1263,6 +1267,10 @@ textarea {
 
 	#primary-menu > li:not(:first-child) {
 		margin-left: var(--gutter-small);
+	}
+
+	.news-head div[class^="item"] {
+		margin-block-end: initial;
 	}
 }
 
