@@ -48,7 +48,8 @@ get_header();
 		</div>
 
 	</div>
-	<div class="content-row content-width">
+	<div class="content-row content-width grid">
+		<div class="news">
 		<?php
 		// the query.
 		// READ
@@ -77,6 +78,9 @@ get_header();
 			<?php }
 			?>
 		<?php endwhile; ?>
+		</div>
+		<div class="meta"></div>
+		
 	</div>
 
 </main><!-- #main -->

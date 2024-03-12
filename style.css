@@ -72,6 +72,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --gutter-small: 10px;
 --gutter-medium: 20px;
 --gutter-large: 30px;
+--ankeiler-color: #efefef;
 }
 
 
@@ -1048,9 +1049,57 @@ textarea {
 	object-fit: cover;
 }
 
-.header-row .entry-title {
-	color: var(--main-background-color);
+.content-row article img {
+	aspect-ratio: 1 / 1;	
+	object-fit: cover;
+}
+
+.content-row .entry-header {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.content-row .entry-header h1 {
+	margin-block-start: 0;
+	order: 2;
+}
+
+.content-row .entry-header .posted-on {
+	order: 1;
+	font-size: 1rem;
+}
+
+.content-row .entry-header .posted-on a:any-link {
+	color: var(--ankeiler-color);
+	text-decoration: none;
+}
+
+.content-row .news-seperator {
+	display: none;
+}
+
+.content-row .cat-links {
+	position: absolute;
+	top: -4rem;
+	padding: 5px 10px;
+	border-radius: 10px;	
+	left: var(--gutter-small);
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: calc(100% - var(--gutter-medium));
+	background-color: var(--lighten-main-font-by-25);
+}
+
+.header-row .entry-title {	
 	line-height: 1.2;
+}
+
+.header-row .entry-title a:any-link {
+	color: var(--main-background-color);
+	text-decoration: none;
 }
 
 .news-head, .soccer-stats-head { 
@@ -1063,16 +1112,22 @@ textarea {
 
 .news-head .cat-links a,
 .news-head .cat-links a:visited,
-.news-head .cat-links a:hover {
+.news-head .cat-links a:hover,
+.news .cat-links a,
+.news .cat-links a:visited,
+.news .cat-links a:hover  {
 	color: var(--sec-background-color);
 }
 
 .news-head .cat-links a,
-.news-head .cat-links a:visited {
+.news-head .cat-links a:visited,
+.news .cat-links a,
+.news .cat-links a:visited {
 	text-decoration: none;
 }
 
-.news-head .cat-links a:hover {
+.news-head .cat-links a:hover, 
+.news .cat-links a:hover {
 	text-decoration: underline;
 }
 
@@ -1105,12 +1160,18 @@ textarea {
 
 .content-row {
 	background: var(--main-background-color);
+	margin-block: var(--gutter-medium);
+}
+
+.content-row .entry-title a:any-link {
+	color: var(--main-font-color);
+	text-decoration: none;
 }
 
 .content-width {
 	max-width: 77.5rem;
 	position: relative;
-	margin: 0 auto;
+	margin-inline: auto;
 }
 
 .nav-menu {
@@ -1275,9 +1336,10 @@ textarea {
 }
 
 @media screen and  (min-width:48em) {
-	.news-head > div:not(:first-of-type) h1 {
+	.news-head > div:not(:first-of-type) h1,
+	.news > div h1 {
 		font-size: 1.2rem !important;
-		line-height: 1.3;
+		line-height: 1.4;
 	}
 
 	.grid {
@@ -1286,7 +1348,7 @@ textarea {
 		gap: var(--gutter-medium);
 	}
 	
-	.news-head {
+	.news-head, .news {
 		grid-column: 1 / 2;
 		display: grid;
 		grid: subgrid / subgrid;
