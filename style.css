@@ -69,6 +69,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --lighten-main-font-by-75: oklch(from var(--main-font-color) calc(l + 75) c h);
 --lighten-main-font-by-50: oklch(from var(--main-font-color) calc(l + 50) c h);
 --lighten-main-font-by-25: oklch(from var(--main-font-color) calc(l + 25) c h);
+--gutter-small: 10px;
+--gutter-medium: 20px;
+--gutter-large: 30px;
+--ankeiler-color: #efefef;
 }
 
 
@@ -1024,14 +1028,150 @@ textarea {
 	background: var(--main-font-color);
 }
 
+.header-row article {
+	position: relative;
+	margin-block-end: 0;
+}
+
+.header-row article header {
+	position: absolute;
+	bottom: var(--gutter-small);
+	left:  var(--gutter-small);
+	right:  var(--gutter-small);
+	background: rgba(0,0,0,0.7);
+	width: calc(100% - var(--gutter-medium));
+	padding-block: 0 var(--gutter-medium);
+	padding-inline: var(--gutter-medium);	
+}
+
+.header-row article img {
+	aspect-ratio: 1 / 1;	
+	object-fit: cover;
+}
+
+.content-row article img {
+	aspect-ratio: 1 / 1;	
+	object-fit: cover;
+}
+
+.content-row .entry-header {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.content-row .entry-header h1 {
+	margin-block-start: 0;
+	order: 2;
+}
+
+.content-row .entry-header .posted-on {
+	order: 1;
+	font-size: 1rem;
+}
+
+.content-row .entry-header .posted-on a:any-link {
+	color: var(--ankeiler-color);
+	text-decoration: none;
+}
+
+.content-row .news-seperator {
+	display: none;
+}
+
+.content-row .cat-links {
+	position: absolute;
+	top: -4rem;
+	padding: 5px 10px;
+	border-radius: 10px;	
+	left: var(--gutter-small);
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: calc(100% - var(--gutter-medium));
+	background-color: var(--lighten-main-font-by-25);
+}
+
+.header-row .entry-title {	
+	line-height: 1.2;
+}
+
+.header-row .entry-title a:any-link {
+	color: var(--main-background-color);
+	text-decoration: none;
+}
+
+.news-head, .soccer-stats-head { 
+	margin-block: var(--gutter-large);
+}
+
+.news-head .post-thumbnail {
+	display: flex;	
+}
+
+.news-head .cat-links a,
+.news-head .cat-links a:visited,
+.news-head .cat-links a:hover,
+.news .cat-links a,
+.news .cat-links a:visited,
+.news .cat-links a:hover  {
+	color: var(--sec-background-color);
+}
+
+.news-head .cat-links a,
+.news-head .cat-links a:visited,
+.news .cat-links a,
+.news .cat-links a:visited {
+	text-decoration: none;
+}
+
+.news-head .cat-links a:hover, 
+.news .cat-links a:hover {
+	text-decoration: underline;
+}
+
+.news-head .posted-on a,
+.news-head .posted-on a:visited,
+.news-head .posted-on a:hover {
+	color: var(--lighten-main-font-by-50);
+}
+
+.news-head .posted-on a,
+.news-head .posted-on a:visited {
+	text-decoration: none;
+}
+
+.news-head .posted-on a:hover {
+	text-decoration: underline;
+}
+
+.news-head h1 {
+	margin-bottom: 5px;
+}
+
+.news-head div[class^="item"] {
+	margin-block-end: var(--gutter-medium);
+}
+
+.cat-links, .posted-on {
+	text-wrap: nowrap;
+}
+
 .content-row {
 	background: var(--main-background-color);
+	margin-block: var(--gutter-medium);
+}
+
+.content-row .entry-title a:any-link {
+	color: var(--main-font-color);
+	text-decoration: none;
 }
 
 .content-width {
 	max-width: 77.5rem;
 	position: relative;
-	margin: 0 auto;
+	margin-inline: auto;
 }
 
 .nav-menu {
@@ -1111,7 +1251,10 @@ textarea {
 	width: 100%;
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 37.5em) {	
+	.donk-adres {
+		left: 6.2rem;
+	}
 	.sub-menu {
 		width: unset;
 	}
@@ -1184,23 +1327,34 @@ textarea {
 	}
 
 	#primary-menu > li:not(:first-child) {
-		margin-left: 10px;
+		margin-left: var(--gutter-small);
+	}
+
+	.news-head div[class^="item"] {
+		margin-block-end: initial;
 	}
 }
 
 @media screen and  (min-width:48em) {
+	.news-head > div:not(:first-of-type) h1,
+	.news > div h1 {
+		font-size: 1.2rem !important;
+		line-height: 1.4;
+	}
+
 	.grid {
 		display: grid;
 		grid-template-columns: 3fr 1fr;
-		grid-gap: 10px;
+		gap: var(--gutter-medium);
 	}
 	
-	.news-head {
+	.news-head, .news {
 		grid-column: 1 / 2;
 		display: grid;
 		grid: subgrid / subgrid;
 		grid-template-rows: 1fr 1fr;
 		grid-template-columns: 1fr 1fr 1fr;
+		gap: var(--gutter-medium);
 	}
 	
 	.news-head .item1 {
