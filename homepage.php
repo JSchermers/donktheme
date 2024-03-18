@@ -50,37 +50,41 @@ get_header();
 	</div>
 	<div class="content-row content-width grid">
 		<div class="news">
-		<?php
-		// the query.
-		// READ
-		$args = array(
-			'post_type' => 'post',
-			'post_status' => 'publish'
-		);
-		$the_query = new WP_Query($args); ?>
-		<?php
-		while ($the_query->have_posts()) :
-			$the_query->the_post();
-		?>
 			<?php
-			$index = $the_query->current_post + 1;
-			if ($index > 3) { ?>
-				<div class="item<?php echo $index; ?>">
-					<?php
-					get_template_part('template-parts/content', 'donk-post');
-
-					// If comments are open or we have at least one comment, load up the comment template.
-					if (comments_open() || get_comments_number()) :
-						comments_template();
-					endif;
-					?>
-				</div>
-			<?php }
+			// the query.
+			// READ
+			$args = array(
+				'post_type' => 'post',
+				'post_status' => 'publish'
+			);
+			$the_query = new WP_Query($args); ?>
+			<?php
+			while ($the_query->have_posts()) :
+				$the_query->the_post();
 			?>
-		<?php endwhile; ?>
+				<?php
+				$index = $the_query->current_post + 1;
+				if ($index > 3) { ?>
+					<div class="item<?php echo $index; ?>">
+						<?php
+						get_template_part('template-parts/content', 'donk-post');
+
+						// If comments are open or we have at least one comment, load up the comment template.
+						if (comments_open() || get_comments_number()) :
+							comments_template();
+						endif;
+						?>
+					</div>
+				<?php }
+				?>
+			<?php endwhile; ?>
 		</div>
-		<div class="meta"></div>
-		
+		<div class="meta">
+			<?php
+			get_sidebar();
+			?>
+		</div>
+
 	</div>
 
 </main><!-- #main -->
@@ -116,5 +120,4 @@ $the_query = new WP_Query($args); ?>
 <?php endif; ?>
 
 <?php
-get_sidebar();
 get_footer();

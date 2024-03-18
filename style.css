@@ -69,9 +69,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --lighten-main-font-by-75: oklch(from var(--main-font-color) calc(l + 75) c h);
 --lighten-main-font-by-50: oklch(from var(--main-font-color) calc(l + 50) c h);
 --lighten-main-font-by-25: oklch(from var(--main-font-color) calc(l + 25) c h);
---gutter-small: 10px;
---gutter-medium: 20px;
---gutter-large: 30px;
+--gutter-small: 8px;
+--gutter-medium: 16px;
+--gutter-large: 32px;
 --ankeiler-color: #efefef;
 }
 
