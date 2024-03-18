@@ -1038,7 +1038,8 @@ textarea {
 	bottom: var(--gutter-small);
 	left:  var(--gutter-small);
 	right:  var(--gutter-small);
-	background: rgba(0,0,0,0.7);
+	background: rgba(34,34,34,0.5);
+	backdrop-filter: blur(20px);
 	width: calc(100% - var(--gutter-medium));
 	padding-block: 0 var(--gutter-medium);
 	padding-inline: var(--gutter-medium);	

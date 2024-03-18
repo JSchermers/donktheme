@@ -64,30 +64,23 @@
 
 					<nav id="site-navigation" class="main-navigation donk-main-navigation">
 						<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'funfun'); ?></button>
+						<!-- Output ClientID uit ACF plugin & cms-bare knop in nav -->
 						<?php
+						$clientid = get_field('clientid', 'option');
+						$button_nav_text =  get_field('button_nav_text', 'option');
+						$button_nav_link =  get_field('button_nav_link', 'option');
 
 						wp_nav_menu(
 							array(
 								// 'theme_location' => 'menu-1',
-								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li class="menu-item donk-nav-lid-worden"><a href="http://www.google.com">Lid worden</a></li></ul>',
+								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li class="menu-item donk-nav-lid-worden"><a href="' . $button_nav_link . '">' . $button_nav_text . '</a></li></ul>',
 								'depth' 		=> 2,
 								'menu_id'        => 'primary-menu',
 							)
 						);
 
 						?>
-						<!-- Output ClientID uit ACF plugin & cms-bare knop in nav -->
-						<?php 
-						$clientid = get_field('clientid', 'option');
-						$button_nav_text =  get_field('button_nav_text', 'option');
-						$button_nav_link =  get_field('button_nav_link', 'option');
-
-							echo 'Output ClientID: '.$clientid;
-
-							if (isset($button_nav_link)) {
-								echo '<a href="' . $button_nav_link . '">' . $button_nav_text . '</a>';
-							}
-						?>
+					
 						<!-- <button>Lid worden</button> -->
 					</nav><!-- #site-navigation -->
 				</div>
