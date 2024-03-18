@@ -37,7 +37,9 @@
 			<div class="site-header">
 				<div class="content-width header-container">
 					<div class="site-branding donk-site-branding">
-						<img src="<?php echo get_template_directory_uri() ?>/assets/images/logo.png" alt="donk logo" class="logo" />
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+							<img src="<?php echo get_template_directory_uri() ?>/assets/images/logo.png" alt="donk logo" class="logo" />
+						</a>
 
 						<!-- Comment OUT -->
 						<!-- <?php
@@ -76,7 +78,21 @@
 						);
 
 						?>
-						<!-- <button>Lid worden</button> -->
+
+						<!-- Output ClientID uit ACF plugin & cms-bare knop in nav -->
+						<?php 
+						$clientid = get_field('clientid', 'option');
+						$button_nav_text =  get_field('button_nav_text', 'option');
+						$button_nav_link =  get_field('button_nav_link', 'option');
+
+							echo 'Output ClientID: '.$clientid;
+
+							if (isset($button_nav_link)) {
+								echo '<a href="' . $button_nav_link . '">' . $button_nav_text . '</a>';
+							}
+						?>
+
+
 					</nav><!-- #site-navigation -->
 				</div>
 			</div>
