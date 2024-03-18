@@ -76,6 +76,18 @@
 						);
 
 						?>
+						<!-- Output ClientID uit ACF plugin & cms-bare knop in nav -->
+						<?php 
+						$clientid = get_field('clientid', 'option');
+						$button_nav_text =  get_field('button_nav_text', 'option');
+						$button_nav_link =  get_field('button_nav_link', 'option');
+
+							echo 'Output ClientID: '.$clientid;
+
+							if (isset($button_nav_link)) {
+								echo '<a href="' . $button_nav_link . '">' . $button_nav_text . '</a>';
+							}
+						?>
 						<!-- <button>Lid worden</button> -->
 					</nav><!-- #site-navigation -->
 				</div>
