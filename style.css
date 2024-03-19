@@ -425,7 +425,7 @@ input,
 select,
 optgroup,
 textarea {
-	color: #404040;
+	color: var(--main-font-color);
 	font-family: 'Hanken Grotesk', sans-serif;
 	font-size: 1rem;
 	line-height: 1.5;
@@ -670,15 +670,6 @@ textarea {
 
 /* Navigation
 --------------------------------------------- */
-/* .main-navigation {
-	display: block;
-	width: 100%;
-} */
-
-.main-navigation {
-
-}
-
 .main-navigation ul {
 	display: none;
 	list-style: none;
@@ -1083,7 +1074,7 @@ textarea {
 .content-row .cat-links {
 	position: absolute;
 	top: -4rem;
-	padding: 5px 10px;
+	padding: 5px var(--gutter-small);
 	border-radius: 10px;	
 	left: var(--gutter-small);
 	display: inline-block;
@@ -1091,7 +1082,9 @@ textarea {
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	width: calc(100% - var(--gutter-medium));
-	background-color: var(--lighten-main-font-by-25);
+	background: rgba(34, 34, 34, 0.5);
+    backdrop-filter: blur(20px);
+
 }
 
 .header-row .entry-title {	
@@ -1104,7 +1097,7 @@ textarea {
 }
 
 .news-head, .soccer-stats-head { 
-	margin-block: var(--gutter-large);
+	padding-block: var(--gutter-medium);
 }
 
 .news-head .post-thumbnail {
@@ -1155,6 +1148,10 @@ textarea {
 	margin-block-end: var(--gutter-medium);
 }
 
+.cat-links {
+	color: var(--sec-background-color);
+}
+
 .cat-links, .posted-on {
 	text-wrap: nowrap;
 }
@@ -1173,6 +1170,7 @@ textarea {
 	max-width: 77.5rem;
 	position: relative;
 	margin-inline: auto;
+	padding-inline: 16px;
 }
 
 .nav-menu {
