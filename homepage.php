@@ -110,7 +110,8 @@ $the_query = new WP_Query($args); ?>
 
 	endwhile; ?>
 	<!-- end of the loop -->
-
+	
+	<?php posts_nav_link(); ?>
 	<!-- pagination here -->
 
 	<?php wp_reset_postdata(); ?>
@@ -121,3 +122,4 @@ $the_query = new WP_Query($args); ?>
 
 <?php
 get_footer();
+?>
