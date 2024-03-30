@@ -72,7 +72,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --gutter-small: 8px;
 --gutter-medium: 16px;
 --gutter-large: 32px;
---ankeiler-color: #efefef;
+--ankeiler-color: rgba(34, 34, 34, 0.5);
 }
 
 
@@ -507,7 +507,7 @@ hr {
 
 ul,
 ol {
-	margin: 0 0 1.5em 3em;
+	margin: 0 0 1.5em var(--gutter-small);
 }
 
 ul {
@@ -556,17 +556,17 @@ table {
 /* Links
 --------------------------------------------- */
 a {
-	color: #4169e1;
+	color: var(--main-font-color);
 }
 
 a:visited {
-	color: #800080;
+	color: var(--main-font-color);
 }
 
 a:hover,
 a:focus,
 a:active {
-	color: #191970;
+	color: var(--main-font-color);
 }
 
 a:focus {
@@ -1059,16 +1059,16 @@ section h5 {
 	padding-inline-end: 1rem;
 }
 
-.header-row {
+.header-footer-row {
 	background: var(--main-font-color);
 }
 
-.header-row article {
+.header-footer-row article {
 	position: relative;
 	margin-block-end: 0;
 }
 
-.header-row article header {
+.header-footer-row article header {
 	position: absolute;
 	bottom: var(--gutter-small);
 	left:  var(--gutter-small);
@@ -1080,7 +1080,7 @@ section h5 {
 	padding-inline: var(--gutter-medium);	
 }
 
-.header-row article img {
+.header-footer-row article img {
 	aspect-ratio: 1 / 1;	
 	object-fit: cover;
 }
@@ -1116,8 +1116,7 @@ section h5 {
 }
 
 .content-row .cat-links {
-	position: absolute;
-	top: -4rem;
+
 	padding: 5px var(--gutter-small);
 	border-radius: 10px;	
 	left: var(--gutter-small);
@@ -1128,10 +1127,15 @@ section h5 {
 	width: calc(100% - var(--gutter-medium));
 	background: rgba(34, 34, 34, 0.5);
     backdrop-filter: blur(20px);
-
 }
 
-.header-row .entry-title a:any-link {
+
+.content-row article:has(.post-thumbnail) .cat-links {
+	position: absolute;
+	top: -4rem;
+}
+
+.header-footer-row .entry-title a:any-link {
 	color: var(--main-background-color);
 	text-decoration: none;
 }
@@ -1415,8 +1419,8 @@ ul.focus .sub-menu {
 		grid-column: 1 / 2;
 		display: grid;
 		grid: subgrid / subgrid;
-		grid-template-rows: 1fr 1fr;
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: repeat(2, minmax(0, 1fr));
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: var(--gutter-medium);
 	}
 	
@@ -1440,3 +1444,32 @@ ul.focus .sub-menu {
 	
 	}
 }
+
+footer .header-footer-row {
+	padding-block: var(--gutter-medium);
+}
+
+footer > * {
+	color: var(--main-background-color); 
+}
+
+.top-sponsored .grid {
+	display: grid;	
+	gap: var(--gutter-small);
+}
+
+.sponsors .grid {
+	display: grid;	
+	gap: var(--gutter-small);
+}
+
+@media screen and  (min-width:32em) {
+	.top-sponsored .grid {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	.sponsors .grid {
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	}
+}
+
+
