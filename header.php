@@ -17,6 +17,7 @@
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="clientId" content="<?php get_field('clientid', 'option') ?>"/>
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,8 +66,7 @@
 					<nav id="site-navigation" class="main-navigation donk-main-navigation">
 						<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'funfun'); ?></button>
 						<!-- Output ClientID uit ACF plugin & cms-bare knop in nav -->
-						<?php
-						$clientid = get_field('clientid', 'option');
+						<?php						
 						$button_nav_text =  get_field('button_nav_text', 'option');
 						$button_nav_link =  get_field('button_nav_link', 'option');
 
