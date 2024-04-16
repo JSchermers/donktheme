@@ -16,23 +16,57 @@
 	<div class="header-footer-row">
 		<div class="content-width">
 			<img src="http://donk.local/wp-content/themes/funfun/assets/images/logo.png" alt="donk logo" class="logo">
+			<!-- dit werkt niet, want het is local-->
+
 			<div class="top-sponsored">
 				<h2>Sponsors selectie</h2>
-				<div class="grid">
-					<div>Sponsor1</div>
-					<div>Sponsor2</div>
-					<div>Sponsor3</div>
-				</div>
+
+				<?php 
+				$sponsors_selectie = get_field('sponsors_selectie','option');
+				if( $sponsors_selectie ) {
+				    echo '<div class="grid">';
+				    foreach( $sponsors_selectie as $sponsor_selectie ) {
+				        $logo = $sponsor_selectie['logo'];
+				        $website_sponsor = $sponsor_selectie['website_sponsor'];
+				        echo '<div>';
+				        if ($website_sponsor) {
+				            echo '<a href="' . esc_url($website_sponsor) . '">';
+				        }
+				        echo wp_get_attachment_image( $logo, 'full' );
+				        if ($website_sponsor) {
+				            echo '</a>';
+				        }
+				        echo '</div>';
+				    }
+				    echo '</div>';
+				}
+				?>
+
 			</div>
 			<div class="sponsors">
 				<h2>Sponsors club</h2>
-				<div class="grid">
-					<div>club1</div>
-					<div>club2</div>
-					<div>club3</div>
-					<div>club4</div>
-					<div>club5</div>
-				</div>
+
+				<?php 
+				$sponsors_club = get_field('sponsors_club','option');
+				if( $sponsors_club ) {
+				    echo '<div class="grid">';
+				    foreach( $sponsors_club as $sponsor_club ) {
+				        $logo = $sponsor_club['logo'];
+				        $website_sponsor = $sponsor_club['website_sponsor'];
+				        echo '<div>';
+				        if ($website_sponsor) {
+				            echo '<a href="' . esc_url($website_sponsor) . '">';
+				        }
+				        echo wp_get_attachment_image( $logo, 'full' );
+				        if ($website_sponsor) {
+				            echo '</a>';
+				        }
+				        echo '</div>';
+				    }
+				    echo '</div>';
+				}
+				?>
+
 			</div>
 		</div>
 	</div>
