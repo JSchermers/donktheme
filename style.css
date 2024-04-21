@@ -716,6 +716,10 @@ textarea {
 	display: block;
 }
 
+.menu-toggle svg {
+	fill: var(--main-background-color);
+}
+
 @media screen and (min-width: 37.5em) {
 
 	.menu-toggle {
@@ -724,6 +728,10 @@ textarea {
 
 	.main-navigation ul {
 		display: flex;
+	}
+
+	.main-navigation-menu-text {
+		display: inline-block;
 	}
 }
 
@@ -1316,8 +1324,11 @@ ul.focus .sub-menu {
 }
 
 .toggled .menu-toggle {
-	background-color: var(--lighten-main-font-by-50);
-	color: var(--main-font-color);
+	background-color: var(--lighten-main-font-by-50);	
+}
+
+.toggled .menu-toggle svg {
+	fill: var(--main-font-color);
 }
 
 .sub-menu {

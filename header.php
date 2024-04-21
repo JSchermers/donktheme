@@ -17,7 +17,7 @@
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="clientId" content="<?php get_field('clientid', 'option') ?>"/>
+	<meta name="clientId" content="<?php get_field('clientid', 'option') ?>" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400&display=swap" rel="stylesheet">
@@ -63,12 +63,17 @@
 					</div><!-- .site-branding -->
 
 					<nav id="site-navigation" class="main-navigation donk-main-navigation">
-						<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'funfun'); ?></button>
-						<!-- Output ClientID uit ACF plugin & cms-bare knop in nav -->
-						<?php						
-						$button_nav_text =  get_field('button_nav_text', 'option');
-						$button_nav_link =  get_field('button_nav_link', 'option');
+						<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+							<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
 
+						</button>
+						<!-- Output ClientID uit ACF plugin & cms-bare knop in nav -->
+							<?php
+							$button_nav_text =  get_field('button_nav_text', 'option');
+							$button_nav_link =  get_field('button_nav_link', 'option');
+							?>
+						
+						<?php
 						wp_nav_menu(
 							array(
 								// 'theme_location' => 'menu-1',
@@ -79,7 +84,7 @@
 						);
 
 						?>
-					
+
 						<!-- <button>Lid worden</button> -->
 					</nav><!-- #site-navigation -->
 				</div>
