@@ -11,7 +11,6 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-
 	<?php funfun_post_thumbnail(); ?>
 	<header class="entry-header">
 		<?php
@@ -25,7 +24,5 @@
 		<?php funfun_posted_on(); ?>
 
 	</header><!-- .entry-header -->
-
-
 
 </article><!-- #post-<?php the_ID(); ?> -->
