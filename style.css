@@ -1107,7 +1107,6 @@ section h5 {
 
 .content-row .entry-header h1 {
 	margin-block-start: 0;
-	/* order: 2; */
 }
 
 .content-row .entry-header .posted-on {
@@ -1124,6 +1123,10 @@ section h5 {
 	display: none;
 }
 
+.content-row .post-wrapper {
+	position: relative;
+}
+
 .content-row .cat-links {
 	display: flex;
 	flex-direction: row;
@@ -1131,7 +1134,7 @@ section h5 {
 	gap: var(--gutter-small);
 	margin-inline-start: var(--gutter-small);
 	position: absolute;
-	bottom: 11ch;
+	top: 10px;
 }
 
 .content-row .cat-links > a {
@@ -1430,11 +1433,6 @@ ul.focus .sub-menu {
 	.news-head div[class^="item"] {
 		margin-block-end: initial;
 	}
-
-	.content-row .cat-links {
-		/* bottom: 28ch */
-	}
-
 }
 
 @media screen and  (min-width:48em) {
@@ -1484,7 +1482,8 @@ ul.focus .sub-menu {
 	}
 
 	.content-row .cat-links {
-		bottom: 2ch
+		bottom: 2ch;
+		top: initial
 	}
 
 	.content-row .entry-header {
