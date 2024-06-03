@@ -17,7 +17,8 @@
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="clientId" content="<?php get_field('clientid', 'option') ?>" />
+	<meta name="clientId" content="<?php the_field('clientid', 'option') ?>" />
+	<meta name="teamCode" content="<?php the_field('teamcode') ?>" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400&display=swap" rel="stylesheet">

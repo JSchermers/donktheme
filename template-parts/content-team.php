@@ -15,7 +15,16 @@
 	</header><!-- .entry-header -->
 
 	<?php funfun_post_thumbnail(); ?>
-
+	<sportlink-team></sportlink-team>
+	<sportlink-wedstrijd>
+		<span slot="next_game">Programma</span>
+	</sportlink-wedstrijd>
+	<sportlink-wedstrijd type="uitslag">
+		<span slot="previous_game">Uitslagen</span>
+	</sportlink-wedstrijd>
+	<sportlink-stand >
+		<span slot="ally_title">Stand</span>
+	</sportlink-stand>
 	<div class="entry-content">
 		<?php
 		the_content();

@@ -41,9 +41,18 @@ get_header();
 				<?php endwhile; ?>
 			</div>
 			<div class="soccer-stats-head">
-				<article class="item4">item4</article>
-				<article class="item5">item5</article>
-				<article class="item6">item6</article>
+				<article class="item4">
+					<sportlink-wedstrijd teamCode="118838" single="true">
+					<span slot="next_game">Volgende wedstrijd</span>
+					</sportlink-wedstrijd>
+
+				</article>
+				<article class="item5">
+					<sportlink-wedstrijd teamCode="118838" type="uitslag" single="true">
+						<span slot="previous_game">Vorige wedstrijd</span>
+					</sportlink-wedstrijd>
+				</article>
+				<article class="item6"></article>
 			</div>
 		</div>
 
@@ -80,6 +89,9 @@ get_header();
 			<?php endwhile; ?>
 		</div>
 		<div class="meta">
+			<sportlink-stand teamCode="118838">
+      			<span slot="ally_title">Stand</span>
+			</sportlink-stand>
 			<?php
 			get_sidebar();
 			?>

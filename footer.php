@@ -76,6 +76,9 @@
 
 <?php wp_footer(); ?>
 
+<script defer src="<?php echo get_template_directory_uri() ?>/js/donk/standen-sportlink.js" ></script>
+<script defer src="<?php echo get_template_directory_uri() ?>/js/donk/team-sportlink.js" ></script>
+<script defer src="<?php echo get_template_directory_uri() ?>/js/donk/wedstrijd-sportlink.js" ></script>
 </body>
 
 </html>
