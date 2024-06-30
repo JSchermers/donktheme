@@ -11,7 +11,8 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-	<div class="content-width grid">
+	<div class="content-row content-width grid">
+	<div class="news">
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
@@ -23,7 +24,7 @@ get_header();
 			while ( have_posts() ) :
 				the_post();
 
-				echo'<div class=team>';
+				echo'<div class="team item">';
 					funfun_post_thumbnail();
 					the_title('<h3 class="page-title">', '</h3>');
 				echo'</div>';
@@ -38,6 +39,7 @@ get_header();
 
 		endif;
 		?>
+	</div>
 	</div>
 	</main><!-- #main -->
 

@@ -27,7 +27,7 @@ get_header();
 					if ($index < 4) { ?>
 						<div class="item<?php echo $index; ?>">
 							<?php
-							get_template_part('template-parts/content', 'donk-post');
+							get_template_part('template-parts/content', 'donk-teaser');
 
 							// If comments are open or we have at least one comment, load up the comment template.
 							if (comments_open() || get_comments_number()) :
@@ -76,7 +76,7 @@ get_header();
 				if ($index > 3) { ?>
 					<div class="item<?php echo $index; ?>">
 						<?php
-						get_template_part('template-parts/content', 'donk-post');
+						get_template_part('template-parts/content', 'donk-teaser');
 
 						// If comments are open or we have at least one comment, load up the comment template.
 						if (comments_open() || get_comments_number()) :

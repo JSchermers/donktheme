@@ -38,8 +38,9 @@
 			<div class="site-header">
 				<div class="content-width header-container">
 					<div class="site-branding donk-site-branding">
-						<img src="<?php echo get_template_directory_uri() ?>/assets/images/logo.png" alt="donk logo" class="logo" />
-
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+							<img src="<?php echo get_template_directory_uri() ?>/assets/images/logo.png" alt="donk logo" class="logo" />
+						</a>	
 						<!-- Comment OUT -->
 						<!-- <?php
 								// the_custom_logo();

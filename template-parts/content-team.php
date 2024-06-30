@@ -38,12 +38,6 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<!-- TEAM OUTPUT -->
-	<?php 
-		$teamcode =  get_field('teamcode');
-		echo 'teamcode: '.$teamcode;
-	?>
-
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">
 			<?php

@@ -15,7 +15,7 @@
 <footer id="colophon" class="site-footer">
 	<div class="header-footer-row">
 		<div class="content-width">
-			<img src="http://donk.local/wp-content/themes/funfun/assets/images/logo.png" alt="donk logo" class="logo">
+			<img src=<?php echo get_template_directory_uri() ?>/assets/images/logo.png" alt="donk logo" class="logo">
 			<!-- dit werkt niet, want het is local-->
 
 			<div class="top-sponsored">
