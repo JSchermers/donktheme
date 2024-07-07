@@ -1435,7 +1435,18 @@ ul.focus .sub-menu {
 	}
 }
 
-@media screen and  (min-width:48em) {
+@media screen and (min-width: 42em) {
+	.news-head {
+		grid-column: 1 / 2;
+		display: grid;
+		grid: subgrid / subgrid;
+		grid-template-rows: repeat(2, minmax(0, 1fr));
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--gutter-medium);
+	}
+}
+
+@media screen and  (min-width: 55em) {
 	.news-head > div:not(:first-of-type) h1,
 	.news > div h1 {
 		font-size: 1.2rem !important;
