@@ -12,12 +12,13 @@ get_header();
 
 	<main id="primary" class="site-main">
 	<div class="content-row content-width grid">
+	<?php if ( have_posts() ) : ?>
+		<header class="page-header">
+			<h1>Teams</h1>
+		</header><!-- .page-header -->
+		<?php endif;?>
 	<div class="news">
 		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1>Teams</h1>
-			</header><!-- .page-header -->
 
 			<?php
 			/* Start the Loop */
