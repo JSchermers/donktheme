@@ -35,7 +35,7 @@ get_header();
 
 <!-------------- POSTS BY CATEGORY ----------------->
 
-		<div class="content-row content-width grid">
+		<div class="content-row content-width">
 			<div class="news">
 				<?php
 				//ACF output

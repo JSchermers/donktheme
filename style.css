@@ -73,6 +73,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --gutter-medium: 16px;
 --gutter-large: 32px;
 --ankeiler-color: rgba(34, 34, 34, 0.5);
+--light-background-color: #f5f5f5;
 }
 
 
@@ -1591,6 +1592,36 @@ footer > * {
 	bottom: calc(var(--gutter-medium) + var(--gutter-small))
 }
 
+.sportlink-team {
+	display: block;
+	padding: var(--gutter-small);
+}
+
+.team-stats {
+	background: var(--light-background-color);
+	padding: var(--gutter-small);
+}
+
+.content-team-grid {
+	margin-block: var(--gutter-medium);
+}
+
+.content-team-grid__item {
+	display: block;
+}
+
+.team-wedstrijden {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	gap: var(--gutter-medium)
+}
+
+.team-wedstrijden sportlink-wedstrijd {
+	display: block;
+	width: 100%;
+}
+
 @media screen and (min-width:48em) {
 	.header-footer-row .donk-post article,
 	.donk-post .entry-content {
@@ -1613,6 +1644,7 @@ footer > * {
 		grid-template-columns: repeat(3, 1fr);
 		gap: var(--gutter-medium);
 		margin-block: var(--gutter-large);
+	
 	}
 
 	.content-team-grid__item:nth-child(1) {
@@ -1620,6 +1652,11 @@ footer > * {
 	}
 	.content-team-grid__item:nth-child(2) {
 		grid-column: 3 / 3;
+	}
+
+	.team-wedstrijden {
+		flex-direction: row;
+
 	}
 
 }
