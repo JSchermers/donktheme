@@ -76,18 +76,11 @@ get_header();
 					?>
 				<?php endwhile; ?>
 			</div>
-			<div class="meta">
-				<sportlink-stand teamCode="118838">
-	      			<span slot="ally_title">Stand</span>
-				</sportlink-stand>
-				<?php
-				get_sidebar();
-				?>
-			</div>
+			
 
 		</div>
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
+// get_sidebar();
 get_footer();
