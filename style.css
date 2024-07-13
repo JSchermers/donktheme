@@ -544,6 +544,10 @@ img {
 	max-width: 100%;
 }
 
+.team-page-img img {
+	width: 100%;
+}
+
 figure {
 	margin: 1em 0;
 }

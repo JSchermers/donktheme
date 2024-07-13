@@ -14,8 +14,9 @@
 	<header class="entry-header">
 		<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 	</header><!-- .entry-header -->
-
-	<?php funfun_post_thumbnail(); ?>
+	<div class="team-page-img">
+		<?php funfun_post_thumbnail(); ?>
+	</div>
 	<sportlink-team></sportlink-team>
 	<div class="content-team-grid">
 		<div class="content-team-grid__item">
