@@ -36,7 +36,7 @@ get_header();
 <!-------------- POSTS BY CATEGORY ----------------->
 
 		<div class="content-row content-width">
-			<div class="news">
+			<div class="news team-news-grid">
 				<?php
 				//ACF output
 				$term = get_field('categorie');

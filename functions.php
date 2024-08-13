@@ -174,6 +174,62 @@ function create_team_post_type() {
 }
 add_action( 'init', 'create_team_post_type' );
 
+/** ================================= MENU ========================================== */
+
+function register_teams_menu() {
+    register_nav_menu('teams-menu', __('Teams Menu'));
+}
+add_action('init', 'register_teams_menu');
+
+class Thumbnail_Walker_Nav_Menu extends Walker_Nav_Menu {
+    // Start Level - Begin een nieuw sub-menu
+    function start_lvl(&$output, $depth = 0, $args = null) {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<ul class=\"sub-menu\">\n";
+    }
+
+    // End Level - Sluit het sub-menu af
+    function end_lvl(&$output, $depth = 0, $args = null) {
+        $indent = str_repeat("\t", $depth);
+        $output .= "$indent</ul>\n";
+    }
+
+    // Start Element - Begin een nieuw menu-item
+    function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
+        global $post;
+
+        $indent = ($depth) ? str_repeat("\t", $depth) : '';
+        $class_names = join(' ', array_filter($item->classes));
+        $class_names = ' class="menu-item ' . esc_attr($class_names) . '"';
+
+        // Haal de post thumbnail op indien beschikbaar
+        $thumbnail = '';
+        if ($item->type == 'post_type' && has_post_thumbnail($item->object_id)) {
+            $thumbnail = get_the_post_thumbnail($item->object_id, 'medium', array('class' => 'menu-thumbnail'));
+        } else {
+            // Gebruik de standaardafbeelding alleen voor sub-menu-items
+            if ($depth > 0) {
+                $thumbnail = '<img src="' . get_template_directory_uri() . '/assets/images/donk-default-team.png" alt="' . esc_attr($item->title) . '" class="menu-thumbnail" />';
+            }
+        }
+
+        // Bouw het menu-item op met thumbnail en titel
+        $output .= $indent . '<li' . $class_names . '>';
+        $output .= '<a href="' . esc_url($item->url) . '">';
+        $output .= $thumbnail; // Toon de thumbnail of de standaardafbeelding (alleen voor sub-menu)
+        $output .= '<span class="menu-item-title">' . $item->title . '</span>'; // Toon de titel
+        $output .= '</a>';
+    }
+
+    // End Element - Sluit het <li> element af
+    function end_el(&$output, $item, $depth = 0, $args = array()) {
+        $output .= "</li>\n";
+    }
+}
+
+
+
+
 
 /**
  * Enqueue scripts and styles.

@@ -63,6 +63,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --main-background-color: #fff;
 --sec-background-color: #fff200;
 --main-font-color: #222;
+--dim-font-color: #999;
 --darken-main-font-by-25: oklch(from var(--main-font-color) calc(l - 25) c h);
 --darken-main-font-by-50: oklch(from var(--main-font-color) calc(l - 50) c h);
 --darken-main-font-by-75: oklch(from var(--main-font-color) calc(l - 75) c h);
@@ -74,6 +75,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --gutter-large: 32px;
 --ankeiler-color: rgba(34, 34, 34, 0.5);
 --light-background-color: #f5f5f5;
+--font-weight-regular: 400;
+--font-weight-bold: 900;
+
 }
 
 
@@ -428,6 +432,7 @@ optgroup,
 textarea {
 	color: var(--main-font-color);
 	font-family: 'Hanken Grotesk', sans-serif;
+	font-weight: var(--font-weight-regular);
 	font-size: 1rem;
 	line-height: 1.5;
 }
@@ -439,6 +444,7 @@ h4,
 h5,
 h6 {
 	clear: both;
+	font-weight: var(--font-weight-bold);
 }
 
 p {
@@ -1043,6 +1049,12 @@ section h5 {
 .bold {
 	font-weight: bold;
 }
+@media screen and (max-width:600px){
+	article h1,
+	section h1{
+		font-size: 1.5rem;
+	}
+}
 
 /* Header
 --------------------------------------------- */
@@ -1086,16 +1098,27 @@ section h5 {
 	bottom: var(--gutter-small);
 	left:  var(--gutter-small);
 	right:  var(--gutter-small);
-	background: rgba(34,34,34,0.5);
+	background: rgba(34,34,34,0.3);
 	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
 	width: calc(100% - var(--gutter-medium));
 	padding-block: 0 var(--gutter-medium);
-	padding-inline: var(--gutter-medium);	
+	padding-inline: var(--gutter-medium);
+	border-radius: 4px;	
+	margin-bottom: var(--gutter-small);
 }
 
 .header-footer-row article img {
 	aspect-ratio: 1 / 1;	
 	object-fit: cover;
+}
+
+.header-footer-row .cat-links a{
+	color: var(--sec-background-color);
+}
+.header-footer-row .news-seperator,
+.header-footer-row .posted-on a{
+	color: var(--dim-font-color);
 }
 
 .content-row article img {
@@ -1164,6 +1187,7 @@ section h5 {
 	background: rgba(34, 34, 34, 0.8);
 	z-index: -1;
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 	
 }
 
@@ -1205,12 +1229,14 @@ section h5 {
 .news-head .posted-on a,
 .news-head .posted-on a:visited,
 .news-head .posted-on a:hover {
-	color: var(--lighten-main-font-by-50);
+	color: var(--dim-font-color);
 }
 
 .news-head .posted-on a,
 .news-head .posted-on a:visited {
 	text-decoration: none;
+	font-size: 0.8rem;
+	text-transform: uppercase;
 }
 
 .news-head .posted-on a:hover {
@@ -1228,6 +1254,8 @@ section h5 {
 
 .cat-links {
 	color: var(--sec-background-color);
+	font-size: 0.8rem;
+	text-transform: uppercase;
 }
 
 .cat-links, .posted-on {
@@ -1271,7 +1299,9 @@ section h5 {
 .menu-item a {
 	display: inline-block;
 	padding-inline: 1rem 1rem;
-	padding-block: 1rem;	
+	padding-block: 1rem;
+	text-transform: uppercase;	
+	font-weight: 600;
 }
 
 .menu-item:hover,
@@ -1330,6 +1360,7 @@ ul.focus .sub-menu {
 	background-color: var(--main-font-color);
 	border-color: var(--darken-main-font-by-75);
 	color: var(--main-background-color);
+	margin-bottom: var(--gutter-medium);
 }
 
 .toggled .menu-toggle {
@@ -1437,6 +1468,7 @@ ul.focus .sub-menu {
 	.donk-nav-lid-worden > a, .donk-nav-lid-worden a:visited, .donk-nav-lid-worden a:hover {
 		color: var(--main-background-color);
 		font-weight: 700;
+		font-size:0.9rem;
 	}
 
 	#primary-menu > li:not(:first-child) {
@@ -1487,6 +1519,14 @@ ul.focus .sub-menu {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: var(--gutter-medium);
 	}
+	.team-news-grid{
+		grid-column: 1 / 2;
+		display: grid;
+		grid: subgrid / subgrid;
+		grid-template-rows: repeat(2, minmax(0, 1fr));
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: var(--gutter-medium);
+	}
 	
 	.news-head .item1 {
 		grid-column: 1 / 3 ;
@@ -1520,11 +1560,12 @@ ul.focus .sub-menu {
 		position: absolute;
 		height: 0;
 	}
+
 }
 
 @media screen and  (min-width:60em) {
 	.content-row .cat-links > a {
-		font-size: 1rem;
+		font-size: 0.8rem;
 	}
 }
 
@@ -1584,13 +1625,15 @@ footer > * {
 }
 
 .header-footer-row .donk-post article img {
-	aspect-ratio: 1.75 / 1;	
+	aspect-ratio: 1 / 1;	
 	object-fit: cover;
+	margin-top: var(--gutter-large);
 }
 
 .header-footer-row .donk-post article header {
-	bottom: calc(var(--gutter-medium) + var(--gutter-small))
+	bottom: var(--gutter-small);
 }
+
 
 .sportlink-team {
 	display: block;
@@ -1632,11 +1675,16 @@ footer > * {
 		width: calc(100% - var(--gutter-large));
 		left: var(--gutter-medium);
 		right: var(--gutter-medium);
-		bottom: calc(var(--gutter-medium) + var(--gutter-medium) )
+		bottom: var(--gutter-medium);
+	}
+
+	.header-footer-row .donk-post article img {
+		aspect-ratio: 1.5 / 1;	
 	}
 
 	.donk-post .entry-header h1 {
 		margin-bottom: 5px;
+		color: #fff;
 	}
 
 	.content-team-grid {
@@ -1659,4 +1707,51 @@ footer > * {
 
 	}
 
+}
+
+/* Custom Teams Navigation */
+
+#menu-teams{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--gutter-medium);
+	padding: var(--gutter-medium);	
+}
+
+.menu-teams-container ul.menu{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--gutter-medium);
+	padding: var(--gutter-medium);
+}
+.menu-teams-container ul{	
+	list-style:none;
+	margin-left: 0;
+	padding-inline-start: 0;
+}
+.menu-teams-container .menu-item a{	
+	padding-inline: 0;
+}
+.menu-teams-container .menu-item:has(.sub-menu)::after{
+	content:none;
+}
+.menu-teams-container .menu-item:not(:last-child) {
+	border-bottom: none;
+}
+
+.team-cat > a {
+	font-size: 1.25rem;
+	font-weight: 900;
+	text-decoration: none;
+}
+
+@media screen and (max-width:800px){
+	#menu-teams{
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media screen and (max-width:600px){
+	#menu-teams{
+		grid-template-columns: 1fr;
+	}
 }

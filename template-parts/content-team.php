@@ -16,9 +16,15 @@
 			<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 		</header><!-- .entry-header -->
 		<div class="team-page-img">
-			<?php funfun_post_thumbnail(); ?>
+			<?php if ( has_post_thumbnail() ) {
+			the_post_thumbnail();
+			} else { ?>
+			<img src="<?php bloginfo('template_directory'); ?>/assets/images/donk-default-team.png" alt="<?php the_title(); ?>" />
+		<?php } ?>
 		</div>
-		<sportlink-team class="sportlink-team"></sportlink-team>
+		<?php if( get_field('toon_spelers') ):?>
+		   <sportlink-team class="sportlink-team"></sportlink-team> 
+		<?php endif;?>
 	</div>
 	<div class="team-stats">
 		<div class="content-width">

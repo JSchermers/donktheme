@@ -13,7 +13,12 @@
 
 	<div class="post-wrapper">
 	<a href="<?php the_permalink();?>">
-		<?php funfun_post_thumbnail(); ?>
+		
+		<?php if ( has_post_thumbnail() ) {
+		the_post_thumbnail();
+		} else { ?>
+		<img src="<?php bloginfo('template_directory'); ?>/assets/images/svdonk.jpg" alt="<?php the_title(); ?>" />
+		<?php } ?>
 	</a>
 	<header class="entry-header">
 		<?php
