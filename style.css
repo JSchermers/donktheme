@@ -1527,6 +1527,26 @@ ul.focus .sub-menu {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 		gap: var(--gutter-medium);
 	}
+
+	.content-row .team-news-grid .entry-header,
+	.content-row .news .entry-header {
+		height: auto;
+		position: static;
+	}
+
+	.content-row .team-news-grid .post-wrapper,
+	.content-row .news .post-wrapper {
+		position: relative;
+	}
+
+	.content-row .team-news-grid .cat-links,
+	.content-row .news .cat-links {
+		position: absolute;
+		top: var(--gutter-small);
+		bottom: initial;
+		
+		
+	}
 	
 	.news-head .item1 {
 		grid-column: 1 / 3 ;
@@ -1587,12 +1607,21 @@ footer > * {
 	gap: var(--gutter-small);
 }
 
+.team-single-page.grid {
+	display: grid;
+	gap: var(--gutter-medium);
+}
+
 @media screen and  (min-width:32em) {
 	.top-sponsored .grid {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 	.sponsors .grid {
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	}
+
+	.team-single-page.grid {
+		grid-template-columns: 1fr 1fr 1fr 1fr
 	}
 }
 
@@ -1660,9 +1689,16 @@ footer > * {
 	gap: var(--gutter-medium)
 }
 
+sportlind-wedstrijd {
+	--sportlink-wedstrijd-wedstrijd-team-logo-width: 5%;
+}
+
 .team-wedstrijden sportlink-wedstrijd {
 	display: block;
 	width: 100%;
+	--sportlink-wedstrijd-block-start: var(--gutter-medium);
+	--sportlink-wedstrijd-block-end: var(--gutter-medium);
+
 }
 
 @media screen and (min-width:48em) {
