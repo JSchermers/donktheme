@@ -77,7 +77,7 @@
 						<?php
 						wp_nav_menu(
 							array(
-								// 'theme_location' => 'menu-1',
+								'theme_location' => 'menu-1',
 								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li class="menu-item donk-nav-lid-worden"><a href="' . $button_nav_link . '">' . $button_nav_text . '</a></li></ul>',
 								'depth' 		=> 2,
 								'menu_id'        => 'primary-menu',
