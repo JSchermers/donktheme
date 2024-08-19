@@ -554,7 +554,8 @@ img {
 /* img width override because width and height are inline in image */
 .team-page-img img,
 .news-head img,
-.news img {
+.news img,
+.donk-post img {
 	width: 100%;
 }
 
