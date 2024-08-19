@@ -551,7 +551,10 @@ img {
 	max-width: 100%;
 }
 
-.team-page-img img {
+/* img width override because width and height are inline in image */
+.team-page-img img,
+.news-head img,
+.news img {
 	width: 100%;
 }
 
