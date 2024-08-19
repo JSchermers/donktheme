@@ -1701,6 +1701,11 @@ sportlind-wedstrijd {
 
 }
 
+.donk-post .entry-header h1 {
+	margin-bottom: 5px;
+	color: #fff;
+}
+
 @media screen and (min-width:48em) {
 	.header-footer-row .donk-post article,
 	.donk-post .entry-content {
@@ -1716,11 +1721,6 @@ sportlind-wedstrijd {
 
 	.header-footer-row .donk-post article img {
 		aspect-ratio: 1.5 / 1;	
-	}
-
-	.donk-post .entry-header h1 {
-		margin-bottom: 5px;
-		color: #fff;
 	}
 
 	.content-team-grid {
