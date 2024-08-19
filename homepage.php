@@ -35,12 +35,7 @@ if ($query->have_posts()) :
             echo'</div>';
         } else {
             // Zodra de vierde post begint, sluit de begin div en voeg de nieuwe div toe
-            if ($post_count == 4) {
-
-                // Voeg hier de nieuwe div toe
-                echo '<div class="tussen-div">';
-                echo '<p>Extra content tussen post 3 en 4</p>'; // Pas dit aan naar wat je wilt tonen
-                echo '</div>';
+            if ($post_count == 4) {      
 
                 echo '</div>'; // news-head
 
