@@ -7,100 +7,110 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-	<div class="header-footer-row">
-		<div class="content-width grid">
-			<div class="news-head">
-				<?php
-				// the query.
-				// READ
-				$args = array(
-					'post_type' => 'post',
-					'post_status' => 'publish'
-				);
-				$the_query = new WP_Query($args); ?>
-				<?php
-				while ($the_query->have_posts()) :
-					$the_query->the_post();
-				?>
-					<?php
-					$index = $the_query->current_post + 1;
-					if ($index < 4) { ?>
-						<div class="item<?php echo $index; ?>">
-							<?php
-							get_template_part('template-parts/content', 'donk-teaser');
 
-							// If comments are open or we have at least one comment, load up the comment template.
-							if (comments_open() || get_comments_number()) :
-								comments_template();
-							endif; ?>
-						</div>
-					<?php }
-					?>
+<?php
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$args = array(
+    'posts_per_page' => 12, // Aantal posts per pagina
+    'paged' => $paged,       // Paginering
+);
+
+$query = new WP_Query($args);
+
+if ($query->have_posts()) :
+    $post_count = 0;
+
+    // Open de begin div voor de eerste drie posts
+    echo '<div class="header-footer-row">';
+    echo '<div class="content-width grid">';
+    echo '<div class="news-head">';
+
+    while ($query->have_posts()) : $query->the_post();
+        $post_count++;
+
+        if ($post_count <= 3) {
+            echo '<div class="item' . $post_count . '">';
+            // Plaats de eerste drie posts in de begin div
+            get_template_part('template-parts/content', 'donk-teaser');
+            echo'</div>';
+        } else {
+            // Zodra de vierde post begint, sluit de begin div en voeg de nieuwe div toe
+            if ($post_count == 4) {
+
+                // Voeg hier de nieuwe div toe
+                echo '<div class="tussen-div">';
+                echo '<p>Extra content tussen post 3 en 4</p>'; // Pas dit aan naar wat je wilt tonen
+                echo '</div>';
+
+                echo '</div>'; // news-head
+
+                echo'<div class="soccer-stats-head">
+                <article class="item4">
+                    <sportlink-wedstrijd teamCode="118838" single="true">
+                    <span slot="next_game">Volgende wedstrijd</span>
+                    </sportlink-wedstrijd>
+
+                </article>
+                <article class="item5">
+                    <sportlink-wedstrijd teamCode="118838" type="uitslag" single="true">
+                        <span slot="previous_game">Vorige wedstrijd</span>
+                    </sportlink-wedstrijd>
+                </article>
+                <article class="item6"></article>
+            </div>
+        </div>';
+
+                echo '</div>'; // content-width grid
+                echo '</div>'; // header-footer-row
+                 
+                echo '<div class="content-row content-width grid">';    
+                echo '<div class="news">'; // Open de nieuws div
+            }
+
+            // Plaats de rest van de posts in de nieuws div
+            echo '<div class="item' . $post_count . '">';
+            get_template_part('template-parts/content', 'donk-teaser');
+            echo'</div>';
+        }
+
+    endwhile;
+
+     // Paginering
+    $pagination_args = array(
+        'total' => $query->max_num_pages,
+        'current' => $paged,
+        'mid_size' => 1,
+        'prev_text' => __('« Vorige'),
+        'next_text' => __('Volgende »'),
+    );
+    echo '<div class="pagination">';
+    echo paginate_links($pagination_args);
+    echo '</div>';
+
+    // Sluit de nieuws div na de loop
+    echo '</div>'; //news
+
+    echo'<div class="meta">';
+    echo'<sportlink-stand teamCode="118838">';
+    echo'<span slot="ally_title">Stand</span>';
+    echo'</sportlink-stand>';
+    echo get_sidebar();
+    echo'</div>';        
+
+    echo '</div>'; //content-row content-width grid
+
+   
+
+    wp_reset_postdata();
+else :
+    echo '<p>' . __('Geen berichten gevonden') . '</p>';
+endif;
+?>
 
 
-				<?php endwhile; ?>
-			</div>
-			<div class="soccer-stats-head">
-				<article class="item4">
-					<sportlink-wedstrijd teamCode="118838" single="true">
-					<span slot="next_game">Volgende wedstrijd</span>
-					</sportlink-wedstrijd>
 
-				</article>
-				<article class="item5">
-					<sportlink-wedstrijd teamCode="118838" type="uitslag" single="true">
-						<span slot="previous_game">Vorige wedstrijd</span>
-					</sportlink-wedstrijd>
-				</article>
-				<article class="item6"></article>
-			</div>
-		</div>
 
-	</div>
-	<div class="content-row content-width grid">
-		<div class="news">
-			<?php
-			// the query.
-			// READ
-			$args = array(
-				'post_type' => 'post',
-				'post_status' => 'publish'
-			);
-			$the_query = new WP_Query($args); ?>
-			<?php
-			while ($the_query->have_posts()) :
-				$the_query->the_post();
-			?>
-				<?php
-				$index = $the_query->current_post + 1;
-				if ($index > 3) { ?>
-					<div class="item<?php echo $index; ?>">
-						<?php
-						get_template_part('template-parts/content', 'donk-teaser');
-
-						// If comments are open or we have at least one comment, load up the comment template.
-						if (comments_open() || get_comments_number()) :
-							comments_template();
-						endif;
-						?>
-					</div>
-				<?php }
-				?>
-			<?php endwhile; ?>
-		</div>
-		<div class="meta">
-			<sportlink-stand teamCode="118838">
-      			<span slot="ally_title">Stand</span>
-			</sportlink-stand>
-			<?php
-			get_sidebar();
-			?>
-		</div>
-
-	</div>
-
-</main><!-- #main -->
-
+</main>
 
 <?php
 get_footer();
