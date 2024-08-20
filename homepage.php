@@ -11,7 +11,7 @@ get_header();
 <?php
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $args = array(
-    'posts_per_page' => 12, // Aantal posts per pagina
+    'posts_per_page' => 24, // Aantal posts per pagina
     'paged' => $paged,       // Paginering
 );
 
