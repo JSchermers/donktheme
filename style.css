@@ -1748,7 +1748,13 @@ sportlind-wedstrijd {
 	}
 
 }
-
+/*Page content-medium*/
+.content-medium article,
+.content-medium .entry-content{
+	max-width: 48rem;
+	margin-inline: var(--gutter-medium);
+	margin: 0 auto;
+}
 /* Custom Teams Navigation */
 
 #menu-teams{
