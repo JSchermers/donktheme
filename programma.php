@@ -15,8 +15,8 @@ get_header(); ?>
             endwhile; // End of the loop.
         
         ?>
-        <div class="entry-content">
-            <sportlink-wedstrijd teamCode="999999" allgames="true"></sportlink-wedstrijd>
+        <div class="entry-content wedstrijden-allgames">
+            <sportlink-wedstrijd allgames="true"></sportlink-wedstrijd>
         </div>
 
         </div><!--content-medium-->
