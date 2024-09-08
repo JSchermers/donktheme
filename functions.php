@@ -99,6 +99,11 @@ function funfun_setup() {
 			'flex-height' => true,
 		)
 	);
+
+	    add_image_size( 'icon-size', 48, 48, true ); 
+	    // De laatste parameter (true) zorgt voor een harde crop, waarbij de afbeelding exact 48x48 pixels zal zijn.
+	
+
 }
 add_action( 'after_setup_theme', 'funfun_setup' );
 
@@ -174,7 +179,7 @@ function create_team_post_type() {
 }
 add_action( 'init', 'create_team_post_type' );
 
-/** ================================= MENU ========================================== */
+/** ================================= TEAMS MENU ========================================== */
 
 function register_teams_menu() {
     register_nav_menu('teams-menu', __('Teams Menu'));

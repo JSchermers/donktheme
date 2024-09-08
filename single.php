@@ -64,6 +64,7 @@ get_header();
 			?>
 		</div><!-- .entry-content -->
 	</div>
+
 </main><!-- #main -->
 
 <?php

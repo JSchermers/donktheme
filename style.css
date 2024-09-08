@@ -1806,3 +1806,57 @@ sportlind-wedstrijd {
 		grid-template-columns: 1fr;
 	}
 }
+
+/* Teaser block
+--------------------------------------------- */
+.teaser-blocks-container{
+	display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Creates 3 equal columns */
+    gap: var(--gutter-medium);
+    margin: var(--gutter-large) 0;
+}
+.teaser-block{
+	position: relative;
+	display: flex;
+	background: var(--light-background-color);
+	border-radius: 4px;
+}
+.teaser-block a{
+	display: flex;
+	width: 100%;
+	padding: var(--gutter-medium);
+	align-items: center;
+	gap:var(--gutter-medium);
+	text-decoration: none;
+}
+.teaser-block img{
+	display: flex;
+	height: 48px;
+	width: 48px;
+}
+.teaser-block .teaser-title{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	margin:0;
+}
+.teaser-block .teaser-title:after{
+	content: '';
+	height: 32px;
+	width: 32px;
+	background: url('assets/icons/arrow-right.svg');
+}
+@media screen and (min-width:48em){
+	.teaser-blocks-container{
+	    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+	}
+	.teaser-block{
+		min-height: 180px;
+	}
+	.teaser-block a{
+		flex-wrap: wrap;
+		align-content: space-between;
+		padding: var(--gutter-large);
+	}
+}

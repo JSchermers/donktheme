@@ -51,4 +51,10 @@
 			?>
 		</footer><!-- .entry-footer -->
 	<?php endif; ?>
+
+	<?php 
+	// ACF - Flexible Content fields.
+			get_template_part('flexible-content');
+	?>
+
 </article><!-- #post-<?php the_ID(); ?> -->
