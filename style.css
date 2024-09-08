@@ -1,7 +1,7 @@
 /*!
 Theme Name: DonkTest
 Theme URI: http://underscores.me/
-Author: JoostSchermers
+Author: JoostSchermers & Koen Bogaard
 Author URI: http://underscores.me/
 Description: test for styling the template
 Version: 1.0.0
@@ -1818,17 +1818,21 @@ sportlind-wedstrijd {
 .teaser-block{
 	position: relative;
 	display: flex;
-	background: var(--light-background-color);
 	border-radius: 4px;
 }
 .teaser-block a{
 	display: flex;
 	width: 100%;
+	background: var(--light-background-color);
 	padding: var(--gutter-medium);
 	align-items: center;
 	gap:var(--gutter-medium);
 	text-decoration: none;
 }
+.teaser-block a:hover{
+	background: #eee;
+}
+
 .teaser-block img{
 	display: flex;
 	height: 48px;
@@ -1846,6 +1850,10 @@ sportlind-wedstrijd {
 	height: 32px;
 	width: 32px;
 	background: url('assets/icons/arrow-right.svg');
+	transition: all linear .2s;
+}
+.teaser-block a:hover .teaser-title:after{
+	background: url('assets/icons/arrow-right.svg') 5px;
 }
 @media screen and (min-width:48em){
 	.teaser-blocks-container{
