@@ -371,6 +371,11 @@ textarea {
 	font: inherit;
 }
 
+.wpcf7-list-item{
+	display: block;
+	margin: 0 0 4px 0;
+}
+
 /* Interactive
 	 ========================================================================== */
 
@@ -648,6 +653,7 @@ textarea {
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	padding: 3px;
+	width: 100%;
 }
 
 input[type="text"]:focus,
@@ -1275,6 +1281,10 @@ section h5 {
 .pagination {
     grid-column: 1 / -1;
     margin-top: 2rem;
+}
+
+.pagination button{
+	margin-right: var(--gutter-medium);
 }
 
 .cat-links {
