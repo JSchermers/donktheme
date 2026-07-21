@@ -13,7 +13,7 @@ get_header();
 
 <main id="primary" class="site-main">
 	<div class="header-footer-row">
-		<div class="donk-post">
+		<div class="donk-post donk-bg">
 			<?php
 			while (have_posts()) :
 				the_post();

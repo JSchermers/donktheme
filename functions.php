@@ -179,6 +179,52 @@ function create_team_post_type() {
 }
 add_action( 'init', 'create_team_post_type' );
 
+function create_team_taxonomy() {
+    $labels = array(
+        'name'              => 'Team categorieën',
+        'singular_name'     => 'Team categorie',
+        'search_items'      => 'Zoek categorieën',
+        'all_items'         => 'Alle categorieën',
+        'parent_item'       => 'Hoofdcategorie',
+        'parent_item_colon' => 'Hoofdcategorie:',
+        'edit_item'         => 'Bewerk categorie',
+        'update_item'       => 'Update categorie',
+        'add_new_item'      => 'Nieuwe categorie toevoegen',
+        'new_item_name'     => 'Nieuwe categorienaam',
+        'menu_name'         => 'Categorieën',
+    );
+
+    register_taxonomy('team_category', array('team'), array(
+        'hierarchical'      => true, // true = categorieën zoals posts
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'team-category'),
+        'show_in_rest'      => true,
+    ));
+}
+add_action('init', 'create_team_taxonomy');
+
+/** ================================= AGENDA ========================================== */
+
+function register_agenda_post_type() {
+
+    register_post_type('agenda', array(
+        'labels' => array(
+            'name' => 'Agenda',
+            'singular_name' => 'Agenda'
+        ),
+        'public' => true,
+        'menu_icon' => 'dashicons-calendar-alt',
+        'supports' => array('title'),
+        'show_in_rest' => true,
+        'has_archive' => false,
+    ));
+
+}
+add_action('init', 'register_agenda_post_type');
+
 /** ================================= TEAMS MENU ========================================== */
 
 function register_teams_menu() {
