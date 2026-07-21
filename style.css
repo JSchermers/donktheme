@@ -77,7 +77,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --light-background-color: #f5f5f5;
 --font-weight-regular: 400;
 --font-weight-bold: 900;
-
+--shadow:0 4px 12px rgba(0,0,0,0.08);
+--shadow-hover: 0 10px 25px rgba(0,0,0,0.15);
+--border-radius: 12px;
 }
 
 
@@ -369,6 +371,11 @@ textarea {
 	font: inherit;
 }
 
+.wpcf7-list-item{
+	display: block;
+	margin: 0 0 4px 0;
+}
+
 /* Interactive
 	 ========================================================================== */
 
@@ -646,6 +653,7 @@ textarea {
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	padding: 3px;
+	width: 100%;
 }
 
 input[type="text"]:focus,
@@ -1126,7 +1134,7 @@ section h5 {
 }
 
 .content-row article img {
-	aspect-ratio: 1 / 1;	
+	aspect-ratio: 1.5 / 1;	
 	object-fit: cover;
 }
 
@@ -1157,6 +1165,20 @@ section h5 {
 
 .content-row .post-wrapper {
 	position: relative;
+	background:var(--main-background-color);
+	box-shadow: var(--shadow);
+	border-radius: var(--border-radius);
+	overflow: hidden;
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.content-row .post-wrapper:hover{
+	transform: translateY(-8px);
+	box-shadow: var(--shadow-hover);
+}
+
+.post-wrapper .entry-header{
+	padding: var(--gutter-medium);
 }
 
 .content-row .cat-links {
@@ -1164,7 +1186,7 @@ section h5 {
 	flex-direction: row;
 	flex-wrap: wrap;
 	gap: var(--gutter-small);
-	margin-inline-start: var(--gutter-small);
+	/*margin-inline-start: var(--gutter-small);*/
 	position: absolute;
 	top: 10px;
 }
@@ -1254,6 +1276,15 @@ section h5 {
 
 .news-head div[class^="item"] {
 	margin-block-end: var(--gutter-medium);
+}
+
+.pagination {
+    grid-column: 1 / -1;
+    margin-top: 2rem;
+}
+
+.pagination button{
+	margin-right: var(--gutter-medium);
 }
 
 .cat-links {
@@ -1388,6 +1419,226 @@ ul.focus .sub-menu {
 	margin-block-end: var(--gutter-medium);
 }
 
+/* Teams overview 2.0 
+--------------------------------------------- */
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gutter-small);
+    margin-bottom: var(--gutter-large);
+}
+
+.team-card {
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.team-card-image {
+    overflow: hidden;
+}
+
+.team-card-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.team-card-title {
+    padding: 16px;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.team-card:hover .team-card-image img {
+    transform: scale(1.05);
+}
+
+/*====== LEDEN BLOK ==============*/
+
+.ereleden-blok {
+    margin:0;
+}
+
+.ereleden-titel {
+    margin-bottom: var(--gutter-large);
+}
+
+.ereleden-categorie {
+    margin-bottom: var(--gutter-large);
+}
+
+.categorie-titel {
+    margin-bottom: var(--gutter-large);
+}
+
+
+/* 1 kolom */
+.leden-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--gutter-large);
+}
+
+
+/* Lid kaart */
+.lid-card {
+    text-align: center;
+}
+
+
+/* Afbeelding wrapper */
+.lid-afbeelding {
+    margin-bottom: var(--gutter-small);
+}
+
+.lid-afbeelding img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
+.teaser-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--gutter-medium);
+    padding: var(--gutter-large) 0;
+}
+
+.leden-grid {
+	    display: grid;
+	    grid-template-columns: repeat(3, 1fr);
+	    gap: var(--gutter-medium);
+	}
+
+
+/*======= BESTUUR & COMMISSIES ================*/
+
+..bestuur-contactpersonen {
+    width: 100%;
+}
+
+.contactpersoon-row {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr   /* functie */
+        100px   /* foto */
+        1fr     /* naam */
+        1.4fr   /* e-mail */
+        1fr;    /* telefoon */
+
+    gap: var(--gutter-small);
+    align-items: center;
+    padding: var(--gutter-small) 0;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.contactpersoon-headings {
+    font-weight: 700;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: var(--gutter-medium);
+}
+
+.contactpersoon-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.contactpersoon-functie {
+    font-weight: 700;
+}
+
+/*======= AGENDA ================*/
+
+.agenda-item {
+    display: flex;
+    gap: var(--gutter-medium);
+    align-items: flex-start;
+    padding: var(--gutter-medium) 0;
+    border-bottom: 1px solid #e5e5e5;
+    /*flex-direction: column;*/
+}
+
+.agenda-kalender {
+    flex: 0 0 60px;
+    width: 60px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #222;
+    background: var(--main-background-color);
+    text-align: center;
+}
+
+.agenda-maand {
+    display: block;
+    padding: 0.3rem 0;
+    background: var(--main-font-color);
+    color: var(--sec-background-color);
+    font-size: .7rem;
+    letter-spacing: 1px;
+}
+
+.agenda-dag {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    padding: .5rem 0 .1rem;
+}
+
+.agenda-jaar {
+    display: block;
+    padding-bottom: .75rem;
+    font-size: .8rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.agenda-content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.agenda-datum-tekst {
+    margin: 4px 0;
+    font-size: .9rem;
+    color: var(--ankeiler-color);
+}
+
+.agenda-content h4 {
+    margin: 0 0 var(--gutter-small);
+}
+
+.agenda-omschrijving p:last-child {
+    margin-bottom: 0;
+}
+
+/*================= FORMULIER ===================*/
+
+.cf7-step { display:none; }
+.cf7-step.active { display:block; }
+
+/*==========================================*/
+
+
 @media screen and (min-width: 37.5em) {	
 	.menu-item a {
 		padding-block: 0
@@ -1482,6 +1733,40 @@ ul.focus .sub-menu {
 	.news-head div[class^="item"] {
 		margin-block-end: initial;
 	}
+	.teaser-grid {
+	    display: grid;
+	    grid-template-columns: repeat(2, 1fr);
+	    gap: var(--gutter-medium);
+	}
+	.leden-grid {
+	    display: grid;
+	    grid-template-columns: repeat(4, 1fr);
+	    gap: var(--gutter-medium);
+	}
+	.lid-afbeelding img {
+	    width: 150px;
+	    height: 150px;
+	    object-fit: cover;
+	    display: block;
+	    margin: 0 auto;
+	    border-radius: 12px;
+	}
+	.agenda-kalender {
+	    flex: 0 0 90px;
+	    width: 90px;
+
+	    position: relative;
+	    overflow: hidden;
+
+	    border-radius: 10px;
+	    border: 1px solid #dcdcdc;
+	    background: #fff;
+
+	    /*box-shadow: 0 3px 12px rgba(0,0,0,.08);*/
+
+	    text-align: center;
+	}
+
 }
 
 @media screen and (min-width: 42em) {
@@ -1499,6 +1784,13 @@ ul.focus .sub-menu {
 		grid-template-columns: 3fr 1fr;
 		gap: var(--gutter-medium);
 	}
+
+	.leden-grid {
+	    display: grid;
+	    grid-template-columns: repeat(5, 1fr);
+	    gap: var(--gutter-large);
+	}
+	
 
 }
 
@@ -1541,15 +1833,14 @@ ul.focus .sub-menu {
 	.content-row .team-news-grid .post-wrapper,
 	.content-row .news .post-wrapper {
 		position: relative;
+
 	}
 
 	.content-row .team-news-grid .cat-links,
 	.content-row .news .cat-links {
 		position: absolute;
 		top: var(--gutter-small);
-		bottom: initial;
-		
-		
+		bottom: initial;		
 	}
 	
 	.news-head .item1 {
@@ -1583,6 +1874,18 @@ ul.focus .sub-menu {
 	.content-row .entry-header {
 		position: absolute;
 		height: 0;
+	}
+
+	.teaser-grid {
+	    display: grid;
+	    grid-template-columns: repeat(3, 1fr);
+	    gap: var(--gutter-medium);
+	}
+
+	.leden-grid {
+	    display: grid;
+	    grid-template-columns: repeat(7, 1fr);
+	    gap: var(--gutter-large);
 	}
 
 }
@@ -1629,7 +1932,6 @@ footer > * {
 	}
 }
 
-
 .entry-content p {
 	max-width: 72ch;
 }
@@ -1640,6 +1942,10 @@ footer > * {
 
 
 /* POST, single donk-post */
+.donk-bg{
+	background: linear-gradient(180deg, #FFF200 0%, #FFFFFF 82.5%);
+}
+
 .donk-post .post-thumbnail {
 	display: flex;
 	padding-block: var(--gutter-medium);
@@ -1807,14 +2113,9 @@ sportlind-wedstrijd {
 	}
 }
 
+
 /* Teaser block
 --------------------------------------------- */
-.teaser-blocks-container{
-	display: grid;
-    grid-template-columns: repeat(1, 1fr); /* Creates 3 equal columns */
-    gap: var(--gutter-medium);
-    margin: var(--gutter-large) 0;
-}
 .teaser-block{
 	position: relative;
 	display: flex;
@@ -1856,9 +2157,7 @@ sportlind-wedstrijd {
 	background: url('assets/icons/arrow-right.svg') 5px;
 }
 @media screen and (min-width:48em){
-	.teaser-blocks-container{
-	    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
-	}
+
 	.teaser-block{
 		min-height: 180px;
 	}
