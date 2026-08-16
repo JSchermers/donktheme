@@ -4,6 +4,9 @@
     </header><!-- .entry-header -->
 
     <?php
+
+    the_content();
+
     $titel = get_field('titel', 'option');
     $leden = get_field('leden', 'option');
 
