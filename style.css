@@ -770,6 +770,7 @@ textarea {
 .posts-navigation .nav-links,
 .post-navigation .nav-links {
 	display: flex;
+	font-size: 0.8em;
 }
 
 .comment-navigation .nav-previous,

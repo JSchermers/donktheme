@@ -227,59 +227,29 @@ add_action('init', 'register_agenda_post_type');
 
 /** ================================= TEAMS MENU ========================================== */
 
-function register_teams_menu() {
-    register_nav_menu('teams-menu', __('Teams Menu'));
+// Voeg de kolom "Volgorde" toe aan het Teams-overzicht
+function team_sort_order_column($columns) {
+    $columns['sort_order'] = 'Volgorde';
+    return $columns;
 }
-add_action('init', 'register_teams_menu');
+add_filter('manage_team_posts_columns', 'team_sort_order_column');
 
-class Thumbnail_Walker_Nav_Menu extends Walker_Nav_Menu {
-    // Start Level - Begin een nieuw sub-menu
-    function start_lvl(&$output, $depth = 0, $args = null) {
-        $indent = str_repeat("\t", $depth);
-        $output .= "\n$indent<ul class=\"sub-menu\">\n";
-    }
 
-    // End Level - Sluit het sub-menu af
-    function end_lvl(&$output, $depth = 0, $args = null) {
-        $indent = str_repeat("\t", $depth);
-        $output .= "$indent</ul>\n";
-    }
+// Toon de waarde van sort_order in de kolom
+function team_sort_order_column_content($column, $post_id) {
+    if ($column === 'sort_order') {
+        $sort_order = get_field('sort_order', $post_id);
 
-    // Start Element - Begin een nieuw menu-item
-    function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
-        global $post;
-
-        $indent = ($depth) ? str_repeat("\t", $depth) : '';
-        $class_names = join(' ', array_filter($item->classes));
-        $class_names = ' class="menu-item ' . esc_attr($class_names) . '"';
-
-        // Haal de post thumbnail op indien beschikbaar
-        $thumbnail = '';
-        if ($item->type == 'post_type' && has_post_thumbnail($item->object_id)) {
-            $thumbnail = get_the_post_thumbnail($item->object_id, 'medium', array('class' => 'menu-thumbnail'));
+        if ($sort_order !== null && $sort_order !== '') {
+            echo esc_html($sort_order);
         } else {
-            // Gebruik de standaardafbeelding alleen voor sub-menu-items
-            if ($depth > 0) {
-                $thumbnail = '<img src="' . get_template_directory_uri() . '/assets/images/donk-default-team.png" alt="' . esc_attr($item->title) . '" class="menu-thumbnail" />';
-            }
+            echo '—';
         }
-
-        // Bouw het menu-item op met thumbnail en titel
-        $output .= $indent . '<li' . $class_names . '>';
-        $output .= '<a href="' . esc_url($item->url) . '">';
-        $output .= $thumbnail; // Toon de thumbnail of de standaardafbeelding (alleen voor sub-menu)
-        $output .= '<span class="menu-item-title">' . $item->title . '</span>'; // Toon de titel
-        $output .= '</a>';
-    }
-
-    // End Element - Sluit het <li> element af
-    function end_el(&$output, $item, $depth = 0, $args = array()) {
-        $output .= "</li>\n";
     }
 }
+add_action('manage_team_posts_custom_column', 'team_sort_order_column_content', 10, 2);
 
-
-
+// ==========================================================
 
 
 /**
