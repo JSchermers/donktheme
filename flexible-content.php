@@ -6,7 +6,10 @@
         <?php while( have_rows('flexibele_inhoud') ): the_row(); ?>
 
 
-            <!-- TEASER BLOCK (REPEATER GRID) -->
+            <!-- ========================================
+                 TEASER BLOCK
+                 ======================================== -->
+
             <?php if( get_row_layout() == 'teaser-block' ): ?>
 
                 <?php $teasers = get_sub_field('teaser'); ?>
@@ -60,8 +63,103 @@
 
                 <?php endif; ?>
 
-            <?php endif; ?>
 
+            <!-- ========================================
+                 CARD BLOCK
+                 ======================================== -->
+
+            <?php elseif( get_row_layout() == 'card' ): ?>
+
+                <?php $cards = get_sub_field('cards'); ?>
+
+                <?php if( $cards ) : ?>
+
+                    <div class="card-grid">
+
+                        <?php foreach( $cards as $card ): ?>
+
+                            <?php
+                            $afbeelding = $card['card-afbeelding'];
+                            $titel      = $card['card-titel'];
+                            $tekst      = $card['card-tekst'];
+                            $link       = $card['card-link'];
+                            ?>
+
+                            <div class="content-card">
+
+                                <?php if( $afbeelding ): ?>
+
+                                    <div class="content-card-image">
+
+                                        <?php
+                                        echo wp_get_attachment_image(
+                                            $afbeelding,
+                                            'large',
+                                            false,
+                                            [
+                                                'alt' => $titel
+                                            ]
+                                        );
+                                        ?>
+
+                                    </div>
+
+                                <?php endif; ?>
+
+
+                                <div class="content-card-content">
+
+                                    <?php if( $titel ): ?>
+
+                                        <h3 class="content-card-title">
+                                            <?php echo esc_html($titel); ?>
+                                        </h3>
+
+                                    <?php endif; ?>
+
+
+                                    <?php if( $tekst ): ?>
+
+                                        <div class="content-card-text">
+                                            <?php echo wp_kses_post($tekst); ?>
+                                        </div>
+
+                                    <?php endif; ?>
+
+                                    <?php if( $link && !empty($link['url']) ): ?>
+
+                                        <a
+                                            class="content-card-link"
+                                            href="<?php echo esc_url($link['url']); ?>"
+                                            <?php if( !empty($link['target']) ): ?>
+                                                target="<?php echo esc_attr($link['target']); ?>"
+                                            <?php endif; ?>
+                                        >
+                                            <?php
+                                            echo esc_html(
+                                                !empty($link['title'])
+                                                    ? $link['title']
+                                                    : 'Lees meer'
+                                            );
+                                            ?>
+                                        </a>
+
+
+
+                                    <?php endif; ?>
+
+                                </div>
+
+                            </div>
+
+                        <?php endforeach; ?>
+
+                    </div>
+
+                <?php endif; ?>
+
+
+            <?php endif; ?>
 
 
         <?php endwhile; ?>

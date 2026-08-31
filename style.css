@@ -64,6 +64,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --sec-background-color: #fff200;
 --main-font-color: #222;
 --dim-font-color: #999;
+--sec-color: #3853a5;
 --darken-main-font-by-25: oklch(from var(--main-font-color) calc(l - 25) c h);
 --darken-main-font-by-50: oklch(from var(--main-font-color) calc(l - 50) c h);
 --darken-main-font-by-75: oklch(from var(--main-font-color) calc(l - 75) c h);
@@ -1377,8 +1378,6 @@ section h5 {
 	display: none;
 } */
 
-
-
 ul.focus .sub-menu {
 	border-top: 1px solid var(--main-font-color);
 	display: block;
@@ -1434,7 +1433,7 @@ ul.focus .sub-menu {
     display: block;
     text-decoration: none;
     background: #fff;
-    border-radius: 12px;
+    border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -1467,7 +1466,7 @@ ul.focus .sub-menu {
     transform: scale(1.05);
 }
 
-/*====== LEDEN BLOK ==============*/
+/*========= LEDEN BLOK ==============*/
 
 .ereleden-blok {
     margin:0;
@@ -1528,43 +1527,31 @@ ul.focus .sub-menu {
 	}
 
 
-/*======= BESTUUR & COMMISSIES ================*/
+/*========== BESTUUR & COMMISSIES ================*/
 
-..bestuur-contactpersonen {
+.bestuur-contactpersonen {
     width: 100%;
+    padding-bottom: var(--gutter-large);
 }
 
-.contactpersoon-row {
-    display: grid;
-
-    grid-template-columns:
-        1.2fr   /* functie */
-        100px   /* foto */
-        1fr     /* naam */
-        1.4fr   /* e-mail */
-        1fr;    /* telefoon */
-
-    gap: var(--gutter-small);
-    align-items: center;
-    padding: var(--gutter-small) 0;
-	border-bottom: 1px solid #e5e5e5;
+ .contactpersoon-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: var(--gutter-medium) 0;
+    border-bottom: 1px solid #e5e5e5;
 }
 
-.contactpersoon-headings {
-    font-weight: 700;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: var(--gutter-medium);
-}
-
-.contactpersoon-img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
+.contactpersoon-col {
+        width: 100%;
+    }
 .contactpersoon-functie {
-    font-weight: 700;
+        font-weight: 700;
+ 	}
+
+.contactpersoon-headings{
+	display: none;
 }
 
 /*======= AGENDA ================*/
@@ -1631,6 +1618,84 @@ ul.focus .sub-menu {
 .agenda-omschrijving p:last-child {
     margin-bottom: 0;
 }
+
+/* ========= CARD BLOCK =============== */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gutter-medium);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-bottom: var(--gutter-large);
+}
+
+/*Card*/
+.content-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: var(--main-background-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+/*.content-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+*/
+/*Afbeelding*/
+.content-card-image {
+    width: 100%;
+    overflow: hidden;
+}
+.content-card-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.content-card:hover .content-card-image img {
+    transform: scale(1.05);
+}
+
+/*Content*/
+.content-card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    padding: var(--gutter-medium);
+}
+
+/* Titel */
+.content-card-title {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+}
+
+/* Tekst */
+.content-card-text {
+    margin: 0 0 16px;
+    line-height: 1.6;
+}
+.content-card-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Link */
+.content-card-link {
+    display: block;
+    margin-top: auto;
+    font-weight: var(--font-weight-bold);
+    color:var(--sec-color);
+}
+
 
 /*================= FORMULIER ===================*/
 
@@ -1791,6 +1856,28 @@ ul.focus .sub-menu {
 	    grid-template-columns: repeat(5, 1fr);
 	    gap: var(--gutter-large);
 	}
+
+	.contactpersoon-row {
+	    display: grid;
+	    grid-template-columns:
+	        1.2fr   /* functie */
+	        1fr     /* naam */
+	        1.4fr   /* e-mail */
+	        1fr;    /* telefoon */
+
+	    gap: var(--gutter-small);
+	    align-items: center;
+	    padding: var(--gutter-small) 0;
+	    border-bottom: 1px solid #e5e5e5;
+	}
+	.contactpersoon-headings {
+	    font-weight: 700;
+	    border-bottom: 2px solid #ccc;
+	    padding-bottom: var(--gutter-medium);
+	}
+	.card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 	
 
 }
@@ -1887,6 +1974,12 @@ ul.focus .sub-menu {
 	    display: grid;
 	    grid-template-columns: repeat(7, 1fr);
 	    gap: var(--gutter-large);
+	}
+	.card-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .content-card-content {
+	    padding: var(--gutter-large);
 	}
 
 }

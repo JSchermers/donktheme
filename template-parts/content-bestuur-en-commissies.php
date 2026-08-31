@@ -32,10 +32,6 @@ $contactpersonen = get_field('contactpersoon', 'option');
             </div>
 
             <div class="contactpersoon-col">
-                Foto
-            </div>
-
-            <div class="contactpersoon-col">
                 Naam
             </div>
 
@@ -66,39 +62,6 @@ $contactpersonen = get_field('contactpersoon', 'option');
                     <?php endif; ?>
 
                 </div>
-
-
-                <!-- Afbeelding -->
-                <div class="contactpersoon-col contactpersoon-image">
-
-                    <?php
-                    if( $persoon['afbeelding'] ) {
-
-                        echo wp_get_attachment_image(
-                            $persoon['afbeelding'],
-                            'thumbnail',
-                            false,
-                            [
-                                'alt' => $persoon['naam'],
-                                'class' => 'contactpersoon-img'
-                            ]
-                        );
-
-                    } else {
-                        ?>
-
-                        <img 
-                            src="<?php echo get_template_directory_uri(); ?>/assets/images/player.png"
-                            alt="<?php echo esc_attr($persoon['naam']); ?>"
-                            class="contactpersoon-img"
-                        />
-
-                        <?php
-                    }
-                    ?>
-
-                </div>
-
 
                 <!-- Naam -->
                 <div class="contactpersoon-col contactpersoon-naam">
