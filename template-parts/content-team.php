@@ -22,6 +22,100 @@
 			<img src="<?php bloginfo('template_directory'); ?>/assets/images/donk-default-team.png" alt="<?php the_title(); ?>" />
 		<?php } ?>
 		</div>
+
+
+		<?php
+$spelers_blokken = get_field('spelers_blokken');
+?>
+
+<?php if ( $spelers_blokken ) : ?>
+
+	<section class="team-spelers">
+
+		<?php foreach ( $spelers_blokken as $blok ) : ?>
+
+			<?php
+			$titel   = $blok['titel'] ?? '';
+			$spelers = $blok['spelers'] ?? array();
+			?>
+
+			<?php if ( $titel || $spelers ) : ?>
+
+				<div class="team-spelers-blok">
+
+					<?php if ( $titel ) : ?>
+						<h2 class="team-spelers-titel">
+							<?php echo esc_html( $titel ); ?>
+						</h2>
+					<?php endif; ?>
+
+
+					<?php if ( $spelers ) : ?>
+
+						<div class="team-spelers-grid">
+
+							<?php foreach ( $spelers as $speler ) : ?>
+
+								<?php
+								$foto = $speler['foto'] ?? '';
+								$naam = $speler['naam'] ?? '';
+
+								$fallback_foto = get_template_directory_uri() . '/assets/images/player.png';
+								?>
+
+								<article class="team-speler">
+
+									<div class="team-speler-foto">
+
+										<?php if ( $foto ) : ?>
+
+											<img
+												src="<?php echo esc_url( $foto['url'] ); ?>"
+												alt="<?php echo esc_attr( $foto['alt'] ?: $naam ); ?>"
+												loading="lazy"
+											>
+
+										<?php else : ?>
+
+											<img
+												src="<?php echo esc_url( $fallback_foto ); ?>"
+												alt="<?php echo esc_attr( $naam ); ?>"
+												loading="lazy"
+											>
+
+										<?php endif; ?>
+
+									</div>
+
+
+									<?php if ( $naam ) : ?>
+
+										<h3 class="team-speler-naam">
+											<?php echo esc_html( $naam ); ?>
+										</h3>
+
+									<?php endif; ?>
+
+								</article>
+
+							<?php endforeach; ?>
+
+						</div>
+
+					<?php endif; ?>
+
+				</div>
+
+			<?php endif; ?>
+
+		<?php endforeach; ?>
+
+	</section>
+
+<?php endif; ?>
+
+
+
 		<?php if( get_field('toon_spelers') ):?>
 		   <sportlink-team class="sportlink-team"></sportlink-team> 
 		<?php endif;?>

@@ -70,7 +70,22 @@
 
             <?php elseif( get_row_layout() == 'card' ): ?>
 
-                <?php $cards = get_sub_field('cards'); ?>
+                <?php
+                // Titel van het card-blok
+                $card_titel = get_sub_field('titel');
+
+                // Cards uit de repeater
+                $cards = get_sub_field('cards');
+                ?>
+
+                <?php if( $card_titel ): ?>
+
+                    <h2 class="card-block-title">
+                        <?php echo esc_html($card_titel); ?>
+                    </h2>
+
+                <?php endif; ?>
+
 
                 <?php if( $cards ) : ?>
 
@@ -80,7 +95,6 @@
 
                             <?php
                             $afbeelding = $card['card-afbeelding'];
-                            $titel      = $card['card-titel'];
                             $tekst      = $card['card-tekst'];
                             $link       = $card['card-link'];
                             ?>
@@ -97,7 +111,7 @@
                                             'large',
                                             false,
                                             [
-                                                'alt' => $titel
+                                                'alt' => ''
                                             ]
                                         );
                                         ?>
@@ -109,15 +123,6 @@
 
                                 <div class="content-card-content">
 
-                                    <?php if( $titel ): ?>
-
-                                        <h3 class="content-card-title">
-                                            <?php echo esc_html($titel); ?>
-                                        </h3>
-
-                                    <?php endif; ?>
-
-
                                     <?php if( $tekst ): ?>
 
                                         <div class="content-card-text">
@@ -125,6 +130,7 @@
                                         </div>
 
                                     <?php endif; ?>
+
 
                                     <?php if( $link && !empty($link['url']) ): ?>
 
@@ -143,8 +149,6 @@
                                             );
                                             ?>
                                         </a>
-
-
 
                                     <?php endif; ?>
 
